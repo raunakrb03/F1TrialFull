@@ -1,0 +1,83 @@
+<div class="container my-5">
+
+  <!-- Load Drivers Button -->
+  <div class="text-center mb-5">
+    <button (click)="loadDrivers()" class="btn btn-primary btn-lg px-5 shadow-sm" style="border-radius: 50px;">
+      🚀 Load Drivers
+    </button>
+  </div>
+
+  <!-- Search + Table Section -->
+  <div *ngIf="showTable" class="mb-5">
+    <!-- Search Bar -->
+    <div class="mb-4">
+      <input type="text" [(ngModel)]="searchTerm" (input)="filterTable()" class="form-control form-control-lg"
+             placeholder="🔍 Search in table..." style="border-radius: 50px;">
+    </div>
+
+    <!-- Driver Table -->
+    <div class="table-responsive">
+      <table class="table table-dark table-striped table-hover rounded-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Team</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let driver of filteredDrivers">
+            <td>{{driver.id}}</td>
+            <td>{{driver.name}}</td>
+            <td>{{driver.nationality}}</td>
+            <td>{{driver.team}}</td>
+            <td>{{driver.points}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Driver Form -->
+  <div class="card shadow-lg border-0 rounded-4 bg-dark text-light">
+    <div class="card-header text-center fw-bold py-3" style="background: linear-gradient(90deg, #ff1e00, #d60000);">
+      <h4 class="mb-0">🏎️ Add New Driver</h4>
+    </div>
+    <div class="card-body p-4">
+      <form (ngSubmit)="onSubmit()" class="row g-4">
+        <div class="col-md-6">
+          <label for="driverName" class="form-label fw-semibold">Driver Name</label>
+          <input type="text" class="form-control form-control-lg" id="driverName"
+                 [(ngModel)]="driver.name" name="name" required placeholder="Enter Driver Name">
+        </div>
+        <div class="col-md-6">
+          <label for="nationality" class="form-label fw-semibold">Nationality</label>
+          <input type="text" class="form-control form-control-lg" id="nationality"
+                 [(ngModel)]="driver.nationality" name="nationality" required placeholder="Enter Nationality">
+        </div>
+        <div class="col-md-6">
+          <label for="team" class="form-label fw-semibold">Team</label>
+          <input type="text" class="form-control form-control-lg" id="team"
+                 [(ngModel)]="driver.team" name="team" required placeholder="Enter Team Name">
+        </div>
+        <div class="col-md-6">
+          <label for="points" class="form-label fw-semibold">Points</label>
+          <input type="number" class="form-control form-control-lg" id="points"
+                 [(ngModel)]="driver.points" name="points" required placeholder="Enter Points">
+        </div>
+        <div class="col-12 text-center mt-3">
+          <button type="submit" class="btn btn-danger btn-lg px-5 shadow-sm" style="border-radius: 50px;">
+            ➕ Add Driver
+          </button>
+        </div>
+      </form>
+
+      <!-- Success Message -->
+      <div *ngIf="submitted" class="alert alert-success mt-4 text-center fw-bold" style="font-size: 1.2rem;">
+        ✅ Driver added successfully!
+      </div>
+    </div>
+  </div>
+</div>

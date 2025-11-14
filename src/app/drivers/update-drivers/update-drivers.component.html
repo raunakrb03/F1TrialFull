@@ -1,0 +1,89 @@
+<!-- src/app/update-drivers/update-drivers.component.html -->
+
+<!-- UPDATE DRIVER -->
+<div class="container my-5">
+    <div class="card shadow-lg border-0 rounded-4 bg-dark text-light">
+      <div class="card-header text-center fw-bold py-3 bg-danger text-white rounded-top">
+        <h4 class="mb-0">🛠️ Update Driver</h4>
+      </div>
+  
+      <div class="card-body p-4">
+        <form (ngSubmit)="updateDriver()" class="row g-4">
+          <div class="col-md-6">
+            <label for="driverId" class="form-label fw-semibold">Driver ID</label>
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              id="driverId"
+              [(ngModel)]="selectedDriver.id"
+              name="id"
+              required
+              placeholder="Enter Driver ID"
+            />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="driverName" class="form-label fw-semibold">Driver Name</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="driverName"
+              [(ngModel)]="selectedDriver.name"
+              name="name"
+              required
+              placeholder="Enter Driver Name"
+            />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="nationality" class="form-label fw-semibold">Nationality</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="nationality"
+              [(ngModel)]="selectedDriver.nationality"
+              name="nationality"
+              required
+              placeholder="Enter Nationality"
+            />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="team" class="form-label fw-semibold">Team</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="team"
+              [(ngModel)]="selectedDriver.team"
+              name="team"
+              required
+              placeholder="Enter Team Name"
+            />
+          </div>
+  
+          <div class="col-md-6">
+            <label for="points" class="form-label fw-semibold">Points</label>
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              id="points"
+              [(ngModel)]="selectedDriver.points"
+              name="points"
+              required
+              placeholder="Enter Points"
+            />
+          </div>
+  
+          <div class="col-12 text-center mt-2">
+            <button type="submit" class="btn btn-warning btn-lg px-5 shadow-sm rounded-pill">
+              ✏️ Update Driver
+            </button>
+          </div>
+        </form>
+  
+        <div *ngIf="updateSuccess" class="alert alert-success mt-4 text-center fw-bold">
+          ✅ Driver updated successfully!
+        </div>
+      </div>
+    </div>
+  </div>

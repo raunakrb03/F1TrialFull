@@ -1,0 +1,39 @@
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="fw-bold text-light">🏁 Driver Standings</h3>
+      <button class="btn btn-primary btn-lg" (click)="getAllDrivers()">Load Driver Statistics</button>
+    </div>
+  
+    <div *ngIf="showTable" class="card shadow-lg bg-dark text-light">
+      <div class="card-body p-0">
+        <table class="table table-dark table-hover mb-0">
+          <thead class="table-danger">
+            <tr>
+              <!-- <th>Image</th> -->
+              <th>ID</th>
+              <th>Name</th>
+              <th>Nationality</th>
+              <th>Team</th>
+              <th>Points</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let driver of driverList">
+              <!-- <td><img [src]="driver.imageUrl" alt="Driver" width="50" class="rounded-circle"></td> -->
+              <td>{{ driver.id }}</td>
+              <td>{{ driver.name }}</td>
+              <td>{{ driver.nationality }}</td>
+              <td>{{ driver.team }}</td>
+              <td>{{ driver.points }}</td>
+              <td>
+                    <!-- <button class="btn btn-warning btn-sm me-2" (click)="editDriver(driver)">Update</button> -->
+                <button class="btn btn-danger btn-sm" (click)="deleteByDriver(driver)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
